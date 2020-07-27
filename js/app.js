@@ -1,37 +1,45 @@
 ﻿// https://flaviocopes.com/dom-ready/
 
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
-    let lsel = $("#leftSelect");
-    let rsel = $("#rightSelect");
-    let grid = $("#grid");
-    let nthFormulaField =  $("#selector");
-    let nthFormula =  nthFormulaField.val();
-    let panel = $("#main-panel");
+    let lsel = document.querySelector("#leftSelect");
+    let rsel = document.querySelector("#rightSelect");
+    let grid = document.querySelector("#grid");
+    let nthFormulaField = document.querySelector("#selector");
+    let nthFormula =  nthFormulaField.value;
+    let panel = document.querySelector("#main-panel");
 	
 
 
     appModule.config(lsel,rsel);
-    lsel.val(2);// 2 x 3
-    rsel.val(3); // 2 x 3
+    lsel.value = 2;
+    rsel.value = 3;
+    //rsel.val(3); // 2 x 3
 
 
     appModule.gridChange(grid,lsel,rsel,nthFormula = 0);
 
-    lsel.change(function () {
+    lsel.addEventListener("change", function () {
         appModule.gridChange(grid,lsel,rsel,nthFormula);
     });
-    rsel.change(function () {
+
+    lsel.addEventListener ("change", function () {
         appModule.gridChange(grid,lsel,rsel,nthFormula);
     });
-    nthFormulaField.keyup(function () {
-        nthFormula = nthFormulaField.val();
+    rsel.addEventListener('change', function () {
+        appModule.gridChange(grid,lsel,rsel,nthFormula);
+    });
+    nthFormulaField.addEventListener("keyup", function () {
+        nthFormula = nthFormulaField.value;
         appModule.gridChange(grid, lsel,rsel,nthFormula);
     });
+
 
 	
 	$(window).resize(function() {
 		//grid = $("#grid");
-		console.log("grid " + grid.width());
+		console.log("grid " + grid.offsetWidth);
 		appModule.gridChange(grid,lsel,rsel,nthFormula);
 	});
 
@@ -42,23 +50,40 @@ document.addEventListener('DOMContentLoaded', (event) => {
 var appModule = (function () {
     //init
     return({
+        
         config: function (firstSelectList,secondSelectList) {
-            firstSelectList.find("option").remove();
-            secondSelectList.find("option").remove();
-    
+            //firstSelectList.find("option").remove();
+            firstSelectList.querySelectorAll("option").forEach(element => {
+                element.remove();
+            });
+           //secondSelectList.find("option").remove();
+            secondSelectList.querySelectorAll("option").forEach(element => {
+                element.remove();
+            });
+
+
+            
             for(i=1;i<=10;i++){
-                firstSelectList.append("<option>" + i +"</option>");
-                secondSelectList.append("<option>" + i + "</option>");
+                let optByLeft = document.createElement("option");
+                let optByRight = document.createElement("option");
+                optByLeft.text = i;
+                optByRight.text = i;
+                firstSelectList.add(optByLeft);
+                secondSelectList.add(optByRight);
+
             }
         },
         gridChange: function (grid,firstSelectList,secondSelectList,nthFormula) {
 
             //чистим
-            grid.find("div").remove();
-    
-            var row = firstSelectList.val();
-            var col = secondSelectList.val();
-            var divWidth = (grid.width() / col) - 7;
+            //grid.find("div").remove();
+            grid.querySelectorAll("div").forEach(element => {
+                element.remove();
+            });
+
+            var row = firstSelectList.value;
+            var col = secondSelectList.value;
+            var divWidth = (grid.offsetWidth / col) - 7;
             var counter = 0;
     
             for (i = 0; i < row; i++) {
@@ -68,6 +93,12 @@ var appModule = (function () {
                 }
             }
             this.changeNthSelector(nthFormula,grid);
+        },
+        changeNthSelector: function (nthFormula, grid) {
+            //grid.find(':nth-child(' + nthFormula + ')').addClass("fill");
+            grid.querySelectorAll(':nth-child(' + nthFormula + ')').forEach(element => {
+                element.classList.Add("fill");
+            });
         }
 
 

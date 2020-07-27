@@ -1,0 +1,73 @@
+body{
+    background-color: 	#cbcaca;
+}
+div.jumbotron{
+    background-color: #d30b0d;
+    color: #ffffff;
+}
+div.jumbotron h1{
+    font-family: 'Stalemate', cursive;
+    font-size: 70px;
+    color: whitesmoke;
+}
+
+
+div#table{
+margin-bottom: 20px;
+}
+div#table #formula input{
+    width:90px;
+    display: inline;
+    position: relative;
+    top:-10px;
+}
+div#table #formula span{
+    font-family: 'Stalemate', cursive;
+    font-size: 50px;
+    color: #00a0d2;
+}
+
+
+
+div#table select{
+    width: 20%;
+    display: inline;
+ }
+
+div#grid{
+    background-color: #428bca;
+
+    min-height: 400px;
+}
+
+div#grid div{
+    display: inline-block;
+    height: 30px;
+    background-color: #ffffff;
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    border-radius: 4px;
+}
+div#grid div.newline{
+    display: block;
+}
+
+div#grid .fill{
+
+    color: white;
+    background-color: #013364;
+}
+
+select.form-control{
+    color: #ffffff;
+    background-color: #428bca;
+}
+select.form-control:focus{
+    box-shadow: 0 0 40px #000000;
+}
+select option:focus{
+    box-shadow: 0 0 10px 100px #1882A8 inset;
+}

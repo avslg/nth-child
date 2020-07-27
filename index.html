@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Nth-child tester</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Stalemate" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|Stalemate" rel="stylesheet">
+    <link rel="stylesheet" href="style/my.css" >
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<title>Nth-child tester - pseudo-class selector - css nth-child examples</title>
+	<meta name=”description” content=”Here is a precise description of my awesome webpage.”>
+
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1><span id="header">CSS селектор</span> div:nth-child()</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 hidden-sm hidden-xs">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Правила</div>
+                <div class="panel-body">
+					<p>CSS псевдокласс  :nth-child() находит один или более элементов, основываясь 
+					на их позиции среди группы соседних элементов.</p>
+		
+					<blockquote>
+					<p>/* Выбирает каждый четвёртый элемент
+					   среди любой группы соседних элементов */
+					<br>
+					:nth-child(4n) {
+					  color: lime;
+					<br>
+					}
+					</p>
+					</blockquote>
+
+					<p>Описывает элементы среди группы соседних с номерами, соответствующими 
+					паттерну An+B, где n — любое положительное целое число или ноль. 
+					Нумерация элементов начинается с единицы. Значения A и B должны быть целые числа.
+					</p>
+
+					<blockquote>
+					<p>/* Выбирает an+b */
+						<br>
+						:nth-child(an+b) {
+						  color: lime;
+						<br>
+						}
+					</p>
+					</blockquote>
+					<div>
+						<h4>Примеры</h4>
+						<hr>	
+						<strong>:nth-child(3n+4)</strong>
+						<p>Выбирает элементы с номерами <br><strong>4, 7, 10, 13, 16 и тд</strong></p>
+						<strong>:nth-child(odd)</strong>
+						<p>Выбирает элементы с номерами <br><strong>1, 3, 5 и тд</strong></p>
+						<strong>:nth-child(even)</strong>
+						<p>Выбирает элементы с номерами <br><strong>2, 4, 6 и тд</strong></p>
+						<strong>:nth-child(2)</strong>
+						<p>Выбирает элемент <strong>2</strong></p>
+					</div>
+	 
+	
+			</div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-9">
+            <div id="table" class="text-center">
+                <form>
+                    <div id="formula" class="form-group">
+                        <span>nth-child(</span>
+                        <input id="selector" type="text"  class="form-control"  placeholder="an + b" list="list-selectors" />
+                        <span>)</span>
+                        <datalist id="list-selectors" >
+                            <option value="even">even</option>
+                            <option value="odd">odd</option>
+                            <option value="n+3">n+3</option>
+                            <option value="2">2</option>
+                            <option value="-2n+3">-2n+3</option>
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        Rows <select class="form-control" id="leftSelect" >
+                            </select>
+                        <i class="fas fa-camera-retro fa-sm"></i>
+                        <select class="form-control" id="rightSelect">
+                        </select>
+                        Columns
+                    </div>
+                </form>
+            </div>
+            <div id="main-panel" class="panel panel-primary">
+                <div class="panel-heading"></div>
+                <div class="panel-body" id="grid" >
+
+
+                </div>
+             </div>
+        </div>
+    </div>
+</div><br>
+
+
+
+<footer class="container-fluid text-center">
+
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

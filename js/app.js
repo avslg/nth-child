@@ -83,13 +83,23 @@ var appModule = (function () {
 
             var row = firstSelectList.value;
             var col = secondSelectList.value;
-            var divWidth = (grid.offsetWidth / col) - 7;
+            var gridWidth = parseFloat(window.getComputedStyle(grid).width);
+           // var divWidth = (grid.offsetWidth / col) - 7;
+            var divWidth = (gridWidth/ col) - 7;
+           alert(gridWidth);
+            alert(grid.offsetWidth);
+
+
             var counter = 0;
-    
+             
             for (i = 0; i < row; i++) {
                 for (j = 0; j < col; j++) {
                     counter++;
-                    grid.append("<div style='width:"+ divWidth + "px'>" + counter +"</div>")
+                    let divBlock = document.createElement("div");
+                    divBlock.setAttribute("style",`width: ${divWidth}px`);
+                    divBlock.innerHTML = counter;
+                    grid.appendChild(divBlock);
+                    //grid.append("<div style='width:"+ divWidth + "px'>" + counter +"</div>")
                 }
             }
             this.changeNthSelector(nthFormula,grid);

@@ -32,11 +32,11 @@ const appModule = (function application() {
       const gridWidth = grid.clientWidth - paddingGridLeft - paddingGridRight;
       const divWidth = (gridWidth / col) - 7;
       let counter = 0;
-      const divBlock = document.createElement('div');
       for (let i = 0; i < row; i += 1) {
         for (let j = 0; j < col; j += 1) {
           counter += 1;
-          // const divBlock = document.createElement('div');
+          // eslint-disable-next-line prefer-const
+          let divBlock = document.createElement('div');
           divBlock.setAttribute('style', `width: ${divWidth}px`);
           divBlock.innerHTML = counter;
           grid.appendChild(divBlock);
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('#grid');
   const nthFormulaField = document.querySelector('#selector');
   let nthFormula = nthFormulaField.value;
-  // const panel = document.querySelector('#main-panel');
 
   appModule.config(lsel, rsel);
   lsel.value = 2;
@@ -87,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     appModule.gridChange(grid, lsel, rsel, nthFormula);
   });
 
-  $(window).resize(() => {
-    // grid = $("#grid");
+  document.addEventListener('resize', () => {
+    // grid = document.querySelector('#grid');
     appModule.gridChange(grid, lsel, rsel, nthFormula);
   });
 });

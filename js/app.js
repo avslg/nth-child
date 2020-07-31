@@ -81,13 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
   rsel.addEventListener('change', () => {
     appModule.gridChange(grid, lsel, rsel, nthFormula);
   });
-  nthFormulaField.addEventListener('keyup', () => {
-    nthFormula = nthFormulaField.value;
-    appModule.gridChange(grid, lsel, rsel, nthFormula);
-  });
 
   document.addEventListener('resize', () => {
     // grid = document.querySelector('#grid');
     appModule.gridChange(grid, lsel, rsel, nthFormula);
+  });
+
+  nthFormulaField.addEventListener('input', () => {
+    nthFormula = nthFormulaField.value;
+    try {
+      if (nthFormula) {
+        appModule.gridChange(grid, lsel, rsel, nthFormula);
+      }
+    } catch (error) {
+      //
+    }
   });
 });
